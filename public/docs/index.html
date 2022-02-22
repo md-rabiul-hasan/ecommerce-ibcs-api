@@ -1,0 +1,2882 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>IBCS-Primax Laravel Developer Assignment</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+                    body .content .php-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.23.0.js"></script>
+
+    <script src="../docs/js/theme-default-3.23.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;,&quot;php&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+    </span>
+</a>
+<div class="tocify-wrapper">
+            <img src="./../ibcs-primax-logo-black.png" alt="logo" class="logo" style="padding-top: 10px;" width="230px"/>
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                            <button type="button" class="lang-button" data-language-name="php">php</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                                                                            <ul id="tocify-header-0" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="introduction">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                                            
+                                                                    </ul>
+                                                <ul id="tocify-header-1" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="authenticating-requests">
+                        <a href="#authenticating-requests">Authenticating requests</a>
+                    </li>
+                                            
+                                                </ul>
+                    
+                    <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-customer-registration">
+                        <a href="#endpoints-POSTapi-customer-registration">Customer Registration</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
+                        <a href="#endpoints-POSTapi-login">Login</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
+                        <a href="#endpoints-POSTapi-logout">Logout</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-product-store">
+                        <a href="#endpoints-POSTapi-product-store">Product Store</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-product--id--show">
+                        <a href="#endpoints-GETapi-product--id--show">Product Show</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-product--id--update">
+                        <a href="#endpoints-POSTapi-product--id--update">Product Update</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-product--product--delete">
+                        <a href="#endpoints-GETapi-product--product--delete">Product Delete</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-product-index">
+                        <a href="#endpoints-GETapi-product-index">Product List</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-product-search--product_name-">
+                        <a href="#endpoints-GETapi-product-search--product_name-">Product Searching</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-product-sorting-highest-to-lowest">
+                        <a href="#endpoints-GETapi-product-sorting-highest-to-lowest">Product Sorting Highest To Lowest Price</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-product-sorting-lowest-to-highest">
+                        <a href="#endpoints-GETapi-product-sorting-lowest-to-highest">Product Sorting Lowest To Highest Price</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-store">
+                        <a href="#endpoints-POSTapi-order-store">Order Reqeust</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-approved">
+                        <a href="#endpoints-POSTapi-order-approved">Order Approved</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-rejected">
+                        <a href="#endpoints-POSTapi-order-rejected">Order Rejected</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-delivery">
+                        <a href="#endpoints-POSTapi-order-delivery">Order Delivery</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-history">
+                        <a href="#endpoints-POSTapi-order-history">Order History</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-order-search">
+                        <a href="#endpoints-POSTapi-order-search">Order Search</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+        
+                        
+            </div>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+        <ul class="toc-footer" id="last-updated">
+        <li>Last updated: February 8 2022</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This api documentation for IBCS Primax simple e-commerce assignment api documentation</p>
+<aside>Admin responsibilities:
+<ul>
+<li>Add/Remove/Update/ products</li>
+<li>See the list of products</li>
+<li>Search a product by name</li>
+<li>Approve or reject the orders</li>
+<li>See the edit history of an order</li>
+<li>Search an order by unique ID</li>
+</ul>
+Buyers responsibilities
+<ul>
+<li>Sign Up/ Log In</li>
+<li>Super admin dynamic permission to others user</li>
+<li>See the list of products</li>
+<li>Search a product by name</li>
+<li> Sort the products by lowest/highest price</li>
+<li>Place an order</li>
+<li>Edit an order until approved or rejected by the admin</li>
+<li>See the edit history of an order</li>
+</ul></aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://127.0.0.1:8000/api/</code></pre>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+            <h2 id="endpoints-POSTapi-customer-registration">Customer Registration</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-customer-registration">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/customer/registration" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Rabiul Hasan\",
+    \"email\": \"mdrabiulhasan.me@gmail.com\",
+    \"password\": \"123456\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/customer/registration"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Rabiul Hasan",
+    "email": "mdrabiulhasan.me@gmail.com",
+    "password": "123456"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/customer/registration',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Rabiul Hasan',
+            'email' =&gt; 'mdrabiulhasan.me@gmail.com',
+            'password' =&gt; '123456',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-customer-registration">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Customer Registration Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;name&quot;: &quot;Rabiul Hasan&quot;,
+        &quot;email&quot;: &quot;mdrabiulhasan.me@gmail.com&quot;,
+        &quot;role_id&quot;: 2,
+        &quot;updated_at&quot;: &quot;2022-02-06T20:26:58.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2022-02-06T20:26:58.000000Z&quot;,
+        &quot;id&quot;: 5
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;status&quot;: 400,
+    &quot;message&quot;: &quot;Your email address already exists&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-customer-registration" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-customer-registration"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-customer-registration"></code></pre>
+</span>
+<span id="execution-error-POSTapi-customer-registration" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-customer-registration"></code></pre>
+</span>
+<form id="form-POSTapi-customer-registration" data-method="POST"
+      data-path="api/customer/registration"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-customer-registration', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-customer-registration"
+                    onclick="tryItOut('POSTapi-customer-registration');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-customer-registration"
+                    onclick="cancelTryOut('POSTapi-customer-registration');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-customer-registration" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/customer/registration</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-customer-registration"
+               value="Rabiul Hasan"
+               data-component="body" hidden>
+    <br>
+<p>required. Customer name</p>
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-customer-registration"
+               value="mdrabiulhasan.me@gmail.com"
+               data-component="body" hidden>
+    <br>
+<p>required. Email must be unique and valid</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-customer-registration"
+               value="123456"
+               data-component="body" hidden>
+    <br>
+<p>required.</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-login">Login</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"mdrabiulhasan.me@gmail.com\",
+    \"password\": \"123456\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mdrabiulhasan.me@gmail.com",
+    "password": "123456"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/login',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'email' =&gt; 'mdrabiulhasan.me@gmail.com',
+            'password' =&gt; '123456',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Login Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;access_token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NDE3OTU4OCwiZXhwIjoxNjQ0MTgzMTg4LCJuYmYiOjE2NDQxNzk1ODgsImp0aSI6InhIZE50d2tZMjRqZVF3SkEiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.md_7MxsZztunX1H3TYlrdh8HTWnsX7qXLRwRGl6rZFo&quot;,
+        &quot;token_type&quot;: &quot;bearer&quot;,
+        &quot;expires_in&quot;: 3600
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;status&quot;: 401,
+    &quot;message&quot;: &quot;Your email or password was incorrect&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-login"></code></pre>
+</span>
+<span id="execution-error-POSTapi-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-login"></code></pre>
+</span>
+<form id="form-POSTapi-login" data-method="POST"
+      data-path="api/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-login"
+               value="mdrabiulhasan.me@gmail.com"
+               data-component="body" hidden>
+    <br>
+<p>required. Email for login</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-login"
+               value="123456"
+               data-component="body" hidden>
+    <br>
+<p>required. Passwrod for login</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-logout">Logout</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/logout',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-logout">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Logout successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;status&quot;: 403,
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;un-authenticated user&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-logout"></code></pre>
+</span>
+<span id="execution-error-POSTapi-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-logout"></code></pre>
+</span>
+<form id="form-POSTapi-logout" data-method="POST"
+      data-path="api/logout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-logout"
+                    onclick="tryItOut('POSTapi-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-logout"
+                    onclick="cancelTryOut('POSTapi-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-logout" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/logout</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-logout" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-logout"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-product-store">Product Store</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-product-store">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/product/store" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"name\": \"Mac-Book Pro\",
+    \"description\": \"Apple Mac-Book Pro 13\'\",
+    \"price\": \"100.00\",
+    \"qty\": 3,
+    \"images\": \"photo.png\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/store"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "name": "Mac-Book Pro",
+    "description": "Apple Mac-Book Pro 13'",
+    "price": "100.00",
+    "qty": 3,
+    "images": "photo.png"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/product/store',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Mac-Book Pro',
+            'description' =&gt; 'Apple Mac-Book Pro 13\'',
+            'price' =&gt; '100.00',
+            'qty' =&gt; 3,
+            'images' =&gt; 'photo.png',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-product-store">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Store Successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;status&quot;: 400,
+    &quot;message&quot;: &quot;The images must be an image.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-product-store" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-product-store"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-product-store"></code></pre>
+</span>
+<span id="execution-error-POSTapi-product-store" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-product-store"></code></pre>
+</span>
+<form id="form-POSTapi-product-store" data-method="POST"
+      data-path="api/product/store"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-product-store', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-product-store"
+                    onclick="tryItOut('POSTapi-product-store');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-product-store"
+                    onclick="cancelTryOut('POSTapi-product-store');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-product-store" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/product/store</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-product-store" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-product-store"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-product-store"
+               value="Mac-Book Pro"
+               data-component="body" hidden>
+    <br>
+<p>required. Product name</p>
+        </p>
+                <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>text</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="POSTapi-product-store"
+               value="Apple Mac-Book Pro 13'"
+               data-component="body" hidden>
+    <br>
+<p>required. Product Description</p>
+        </p>
+                <p>
+            <b><code>price</code></b>&nbsp;&nbsp;<small>decimal</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="price"
+               data-endpoint="POSTapi-product-store"
+               value="100.00"
+               data-component="body" hidden>
+    <br>
+<p>required. Product Price</p>
+        </p>
+                <p>
+            <b><code>qty</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="qty"
+               data-endpoint="POSTapi-product-store"
+               value="3"
+               data-component="body" hidden>
+    <br>
+<p>required. Product quantity</p>
+        </p>
+                <p>
+            <b><code>images</code></b>&nbsp;&nbsp;<small>files</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="images"
+               data-endpoint="POSTapi-product-store"
+               value="photo.png"
+               data-component="body" hidden>
+    <br>
+<p>required. Product image only image accept</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-GETapi-product--id--show">Product Show</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product--id--show">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/api/product/2/show" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/2/show"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/api/product/2/show',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product--id--show">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Fetching Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;Mobile&quot;,
+        &quot;description&quot;: &quot;Redmi&quot;,
+        &quot;price&quot;: &quot;10000.00&quot;,
+        &quot;qty&quot;: 3,
+        &quot;images&quot;: &quot;product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg&quot;,
+        &quot;entry_date&quot;: &quot;2022-02-06&quot;,
+        &quot;created_at&quot;: &quot;2022-02-06T17:36:12.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-02-06T19:32:25.000000Z&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product--id--show" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product--id--show"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product--id--show"></code></pre>
+</span>
+<span id="execution-error-GETapi-product--id--show" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product--id--show"></code></pre>
+</span>
+<form id="form-GETapi-product--id--show" data-method="GET"
+      data-path="api/product/{id}/show"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product--id--show', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product--id--show"
+                    onclick="tryItOut('GETapi-product--id--show');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product--id--show"
+                    onclick="cancelTryOut('GETapi-product--id--show');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product--id--show" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product/{id}/show</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="GETapi-product--id--show"
+               value="2"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the product.</p>
+            </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-product--id--update">Product Update</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-product--id--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/product/2/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"name\": \"Mac-Book Pro\",
+    \"description\": \"Apple Mac-Book Pro 13\'\",
+    \"price\": \"100.00\",
+    \"qty\": 3,
+    \"images\": \"photo.png\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/2/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "name": "Mac-Book Pro",
+    "description": "Apple Mac-Book Pro 13'",
+    "price": "100.00",
+    "qty": 3,
+    "images": "photo.png"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/product/2/update',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Mac-Book Pro',
+            'description' =&gt; 'Apple Mac-Book Pro 13\'',
+            'price' =&gt; '100.00',
+            'qty' =&gt; 3,
+            'images' =&gt; 'photo.png',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-product--id--update">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Updated Successfully&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-product--id--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-product--id--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-product--id--update"></code></pre>
+</span>
+<span id="execution-error-POSTapi-product--id--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-product--id--update"></code></pre>
+</span>
+<form id="form-POSTapi-product--id--update" data-method="POST"
+      data-path="api/product/{id}/update"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-product--id--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-product--id--update"
+                    onclick="tryItOut('POSTapi-product--id--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-product--id--update"
+                    onclick="cancelTryOut('POSTapi-product--id--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-product--id--update" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/product/{id}/update</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-product--id--update" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-product--id--update"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="POSTapi-product--id--update"
+               value="2"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the product.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-product--id--update"
+               value="Mac-Book Pro"
+               data-component="body" hidden>
+    <br>
+<p>required. Product name</p>
+        </p>
+                <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>text</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="POSTapi-product--id--update"
+               value="Apple Mac-Book Pro 13'"
+               data-component="body" hidden>
+    <br>
+<p>required. Product Description</p>
+        </p>
+                <p>
+            <b><code>price</code></b>&nbsp;&nbsp;<small>decimal</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="price"
+               data-endpoint="POSTapi-product--id--update"
+               value="100.00"
+               data-component="body" hidden>
+    <br>
+<p>required. Product Price</p>
+        </p>
+                <p>
+            <b><code>qty</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="qty"
+               data-endpoint="POSTapi-product--id--update"
+               value="3"
+               data-component="body" hidden>
+    <br>
+<p>required. Product quantity</p>
+        </p>
+                <p>
+            <b><code>images</code></b>&nbsp;&nbsp;<small>files</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="images"
+               data-endpoint="POSTapi-product--id--update"
+               value="photo.png"
+               data-component="body" hidden>
+    <br>
+<p>required. Product image only image accept</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-GETapi-product--product--delete">Product Delete</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-product--product--delete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/api/product/2/delete" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/2/delete"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/api/product/2/delete',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product--product--delete">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Delete Successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;status&quot;: 404,
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;your item not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product--product--delete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product--product--delete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product--product--delete"></code></pre>
+</span>
+<span id="execution-error-GETapi-product--product--delete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product--product--delete"></code></pre>
+</span>
+<form id="form-GETapi-product--product--delete" data-method="GET"
+      data-path="api/product/{product}/delete"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product--product--delete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product--product--delete"
+                    onclick="tryItOut('GETapi-product--product--delete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product--product--delete"
+                    onclick="cancelTryOut('GETapi-product--product--delete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product--product--delete" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product/{product}/delete</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-product--product--delete" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-product--product--delete"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>product</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="product"
+               data-endpoint="GETapi-product--product--delete"
+               value="2"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-GETapi-product-index">Product List</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product-index">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/api/product/index" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/index"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/api/product/index',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product-index">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product List&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Computer&quot;,
+            &quot;description&quot;: &quot;Laptop core i3&quot;,
+            &quot;price&quot;: &quot;60000.00&quot;,
+            &quot;qty&quot;: 1,
+            &quot;images&quot;: &quot;product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Mobile&quot;,
+            &quot;description&quot;: &quot;Redmi&quot;,
+            &quot;price&quot;: &quot;10000.00&quot;,
+            &quot;qty&quot;: 3,
+            &quot;images&quot;: &quot;product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product-index" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product-index"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product-index"></code></pre>
+</span>
+<span id="execution-error-GETapi-product-index" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product-index"></code></pre>
+</span>
+<form id="form-GETapi-product-index" data-method="GET"
+      data-path="api/product/index"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product-index', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product-index"
+                    onclick="tryItOut('GETapi-product-index');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product-index"
+                    onclick="cancelTryOut('GETapi-product-index');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product-index" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product/index</code></b>
+        </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-GETapi-product-search--product_name-">Product Searching</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product-search--product_name-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/api/product/search/error" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/search/error"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/api/product/search/error',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product-search--product_name-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Searching Result&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Computer&quot;,
+            &quot;description&quot;: &quot;Laptop core i3&quot;,
+            &quot;price&quot;: &quot;60000.00&quot;,
+            &quot;qty&quot;: 1,
+            &quot;images&quot;: &quot;product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product-search--product_name-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product-search--product_name-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product-search--product_name-"></code></pre>
+</span>
+<span id="execution-error-GETapi-product-search--product_name-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product-search--product_name-"></code></pre>
+</span>
+<form id="form-GETapi-product-search--product_name-" data-method="GET"
+      data-path="api/product/search/{product_name}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product-search--product_name-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product-search--product_name-"
+                    onclick="tryItOut('GETapi-product-search--product_name-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product-search--product_name-"
+                    onclick="cancelTryOut('GETapi-product-search--product_name-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product-search--product_name-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product/search/{product_name}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>product_name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="product_name"
+               data-endpoint="GETapi-product-search--product_name-"
+               value="error"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-GETapi-product-sorting-highest-to-lowest">Product Sorting Highest To Lowest Price</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product-sorting-highest-to-lowest">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/api/product/sorting/highest-to-lowest" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/sorting/highest-to-lowest"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/api/product/sorting/highest-to-lowest',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product-sorting-highest-to-lowest">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Sorting Success&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Mobile&quot;,
+            &quot;description&quot;: &quot;Redmi&quot;,
+            &quot;price&quot;: &quot;10000.00&quot;,
+            &quot;qty&quot;: 3,
+            &quot;images&quot;: &quot;product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Computer&quot;,
+            &quot;description&quot;: &quot;Laptop core i3&quot;,
+            &quot;price&quot;: &quot;60000.00&quot;,
+            &quot;qty&quot;: 1,
+            &quot;images&quot;: &quot;product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product-sorting-highest-to-lowest" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product-sorting-highest-to-lowest"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product-sorting-highest-to-lowest"></code></pre>
+</span>
+<span id="execution-error-GETapi-product-sorting-highest-to-lowest" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product-sorting-highest-to-lowest"></code></pre>
+</span>
+<form id="form-GETapi-product-sorting-highest-to-lowest" data-method="GET"
+      data-path="api/product/sorting/highest-to-lowest"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product-sorting-highest-to-lowest', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product-sorting-highest-to-lowest"
+                    onclick="tryItOut('GETapi-product-sorting-highest-to-lowest');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product-sorting-highest-to-lowest"
+                    onclick="cancelTryOut('GETapi-product-sorting-highest-to-lowest');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product-sorting-highest-to-lowest" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product/sorting/highest-to-lowest</code></b>
+        </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-GETapi-product-sorting-lowest-to-highest">Product Sorting Lowest To Highest Price</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product-sorting-lowest-to-highest">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/api/product/sorting/lowest-to-highest" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/product/sorting/lowest-to-highest"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/api/product/sorting/lowest-to-highest',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product-sorting-lowest-to-highest">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Product Sorting Success&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Computer&quot;,
+            &quot;description&quot;: &quot;Laptop core i3&quot;,
+            &quot;price&quot;: &quot;60000.00&quot;,
+            &quot;qty&quot;: 1,
+            &quot;images&quot;: &quot;product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Mobile&quot;,
+            &quot;description&quot;: &quot;Redmi&quot;,
+            &quot;price&quot;: &quot;10000.00&quot;,
+            &quot;qty&quot;: 3,
+            &quot;images&quot;: &quot;product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg&quot;,
+            &quot;entry_date&quot;: &quot;2022-02-06&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product-sorting-lowest-to-highest" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product-sorting-lowest-to-highest"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product-sorting-lowest-to-highest"></code></pre>
+</span>
+<span id="execution-error-GETapi-product-sorting-lowest-to-highest" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product-sorting-lowest-to-highest"></code></pre>
+</span>
+<form id="form-GETapi-product-sorting-lowest-to-highest" data-method="GET"
+      data-path="api/product/sorting/lowest-to-highest"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product-sorting-lowest-to-highest', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product-sorting-lowest-to-highest"
+                    onclick="tryItOut('GETapi-product-sorting-lowest-to-highest');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product-sorting-lowest-to-highest"
+                    onclick="cancelTryOut('GETapi-product-sorting-lowest-to-highest');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product-sorting-lowest-to-highest" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product/sorting/lowest-to-highest</code></b>
+        </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-order-store">Order Reqeust</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-order-store">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/order/store" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"amount\": \"1000.00\",
+    \"shipping_address\": \"IBCS-Primax\",
+    \"items\": [
+        {
+            \"product_id\": \"2\",
+            \"qty\": 2,
+            \"price\": 10
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/order/store"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "amount": "1000.00",
+    "shipping_address": "IBCS-Primax",
+    "items": [
+        {
+            "product_id": "2",
+            "qty": 2,
+            "price": 10
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/order/store',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '2',
+                    ],
+                    'qty' =&gt; [
+                        2,
+                    ],
+                    'price' =&gt; [
+                        10.0,
+                    ],
+                ],
+            ],
+            [
+                'amount' =&gt; '1000.00',
+                'shipping_address' =&gt; 'IBCS-Primax',
+                'items' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-order-store">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Order Confirmed Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;order_tracking_no&quot;: &quot;62003816439d2&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-order-store" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-order-store"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-order-store"></code></pre>
+</span>
+<span id="execution-error-POSTapi-order-store" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-order-store"></code></pre>
+</span>
+<form id="form-POSTapi-order-store" data-method="POST"
+      data-path="api/order/store"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-order-store', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-order-store"
+                    onclick="tryItOut('POSTapi-order-store');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-order-store"
+                    onclick="cancelTryOut('POSTapi-order-store');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-order-store" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/order/store</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-order-store" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-order-store"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>amount</code></b>&nbsp;&nbsp;<small>decimal</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="amount"
+               data-endpoint="POSTapi-order-store"
+               value="1000.00"
+               data-component="body" hidden>
+    <br>
+<p>required.</p>
+        </p>
+                <p>
+            <b><code>shipping_address</code></b>&nbsp;&nbsp;<small>text</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="shipping_address"
+               data-endpoint="POSTapi-order-store"
+               value="IBCS-Primax"
+               data-component="body" hidden>
+    <br>
+<p>required.</p>
+        </p>
+                <p>
+            <b><code>items</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="items[0]"
+               data-endpoint="POSTapi-order-store"
+               data-component="body" hidden>
+        <input type="text"
+               name="items[1]"
+               data-endpoint="POSTapi-order-store"
+               data-component="body" hidden>
+    <br>
+<p>required.</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-order-approved">Order Approved</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-order-approved">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/order/approved" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"order_tracking_no\": \"62003816439d2\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/order/approved"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "order_tracking_no": "62003816439d2"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/order/approved',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'order_tracking_no' =&gt; '62003816439d2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-order-approved">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Order Approved Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;order_tracking_no&quot;: &quot;62003816439d2&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-order-approved" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-order-approved"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-order-approved"></code></pre>
+</span>
+<span id="execution-error-POSTapi-order-approved" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-order-approved"></code></pre>
+</span>
+<form id="form-POSTapi-order-approved" data-method="POST"
+      data-path="api/order/approved"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-order-approved', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-order-approved"
+                    onclick="tryItOut('POSTapi-order-approved');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-order-approved"
+                    onclick="cancelTryOut('POSTapi-order-approved');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-order-approved" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/order/approved</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-order-approved" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-order-approved"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>order_tracking_no</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_tracking_no"
+               data-endpoint="POSTapi-order-approved"
+               value="62003816439d2"
+               data-component="body" hidden>
+    <br>
+<p>required. Every order tracking number is unique</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-order-rejected">Order Rejected</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-order-rejected">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/order/rejected" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"order_tracking_no\": \"62003816439d2\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/order/rejected"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "order_tracking_no": "62003816439d2"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/order/rejected',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'order_tracking_no' =&gt; '62003816439d2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-order-rejected">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Order Rejected Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;order_tracking_no&quot;: &quot;62003816439d2&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-order-rejected" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-order-rejected"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-order-rejected"></code></pre>
+</span>
+<span id="execution-error-POSTapi-order-rejected" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-order-rejected"></code></pre>
+</span>
+<form id="form-POSTapi-order-rejected" data-method="POST"
+      data-path="api/order/rejected"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-order-rejected', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-order-rejected"
+                    onclick="tryItOut('POSTapi-order-rejected');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-order-rejected"
+                    onclick="cancelTryOut('POSTapi-order-rejected');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-order-rejected" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/order/rejected</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-order-rejected" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-order-rejected"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>order_tracking_no</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_tracking_no"
+               data-endpoint="POSTapi-order-rejected"
+               value="62003816439d2"
+               data-component="body" hidden>
+    <br>
+<p>required. Every order tracking number is unique</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-order-delivery">Order Delivery</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-order-delivery">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/order/delivery" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"order_tracking_no\": \"62003816439d2\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/order/delivery"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "order_tracking_no": "62003816439d2"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/order/delivery',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'order_tracking_no' =&gt; '62003816439d2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-order-delivery">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Order Delivery Successfully&quot;,
+    &quot;data&quot;: {
+        &quot;order_tracking_no&quot;: &quot;62003816439d2&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;status&quot;: 400,
+    &quot;message&quot;: &quot;In this order all product doesn't available in stock&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-order-delivery" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-order-delivery"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-order-delivery"></code></pre>
+</span>
+<span id="execution-error-POSTapi-order-delivery" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-order-delivery"></code></pre>
+</span>
+<form id="form-POSTapi-order-delivery" data-method="POST"
+      data-path="api/order/delivery"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-order-delivery', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-order-delivery"
+                    onclick="tryItOut('POSTapi-order-delivery');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-order-delivery"
+                    onclick="cancelTryOut('POSTapi-order-delivery');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-order-delivery" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/order/delivery</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-order-delivery" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-order-delivery"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>order_tracking_no</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_tracking_no"
+               data-endpoint="POSTapi-order-delivery"
+               value="62003816439d2"
+               data-component="body" hidden>
+    <br>
+<p>required. Every order tracking number is unique</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-order-history">Order History</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-order-history">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/order/history" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"order_tracking_no\": \"62003816439d2\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/order/history"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "order_tracking_no": "62003816439d2"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/order/history',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'order_tracking_no' =&gt; '62003816439d2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-order-history">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+     &quot;success&quot;: true,
+     &quot;status&quot;: 200,
+     &quot;message&quot;: &quot;Order Delivery Successfully&quot;,
+     &quot;data&quot;: [
+          {
+              &quot;message&quot;: &quot;Order Confirmed&quot;,
+              &quot;user_name&quot;: &quot;Rabiul Hasan&quot;,
+              &quot;date_time&quot;: &quot;2022-02-06 21:25:34&quot;
+         },
+         {
+             &quot;message&quot;: &quot;Order Approved&quot;,
+             &quot;user_name&quot;: &quot;Rabiul Hasan&quot;,
+              &quot;date_time&quot;: &quot;2022-02-06 21:26:24&quot;
+          },
+         {
+              &quot;message&quot;: &quot;Order Delivery Complete&quot;,
+              &quot;user_name&quot;: &quot;Rabiul Hasan&quot;,
+              &quot;date_time&quot;: &quot;2022-02-06 21:26:37&quot;
+          },
+     ]
+  }</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-order-history" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-order-history"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-order-history"></code></pre>
+</span>
+<span id="execution-error-POSTapi-order-history" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-order-history"></code></pre>
+</span>
+<form id="form-POSTapi-order-history" data-method="POST"
+      data-path="api/order/history"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-order-history', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-order-history"
+                    onclick="tryItOut('POSTapi-order-history');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-order-history"
+                    onclick="cancelTryOut('POSTapi-order-history');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-order-history" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/order/history</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-order-history" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-order-history"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>order_tracking_no</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_tracking_no"
+               data-endpoint="POSTapi-order-history"
+               value="62003816439d2"
+               data-component="body" hidden>
+    <br>
+<p>required. Every order tracking number is unique</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+                <h2 id="endpoints-POSTapi-order-search">Order Search</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-order-search">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/api/order/search" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: bearer your-token" \
+    --data "{
+    \"order_tracking_no\": \"62003816439d2\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/api/order/search"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "bearer your-token",
+};
+
+let body = {
+    "order_tracking_no": "62003816439d2"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/api/order/search',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'bearer your-token',
+        ],
+        'json' =&gt; [
+            'order_tracking_no' =&gt; '62003816439d2',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-order-search">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Order Searching Result&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 7,
+        &quot;amount&quot;: &quot;100.00&quot;,
+        &quot;shipping_address&quot;: &quot;Fokirapool, Dhaka, Bangladesh&quot;,
+        &quot;order_tracking_no&quot;: &quot;6200220e07f43&quot;,
+        &quot;date&quot;: &quot;2022-02-06&quot;,
+        &quot;status&quot;: 3
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-order-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-order-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-order-search"></code></pre>
+</span>
+<span id="execution-error-POSTapi-order-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-order-search"></code></pre>
+</span>
+<form id="form-POSTapi-order-search" data-method="POST"
+      data-path="api/order/search"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Authorization":"bearer your-token"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-order-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-order-search"
+                    onclick="tryItOut('POSTapi-order-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-order-search"
+                    onclick="cancelTryOut('POSTapi-order-search');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-order-search" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/order/search</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-order-search" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-order-search"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>order_tracking_no</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_tracking_no"
+               data-endpoint="POSTapi-order-search"
+               value="62003816439d2"
+               data-component="body" hidden>
+    <br>
+<p>required. Every order tracking number is unique</p>
+        </p>
+        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>success</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<br>
+<p>The success of this API response is (<code>true</code> or <code>false</code>).</p>
+        </p>
+        
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                                        <button type="button" class="lang-button" data-language-name="php">php</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

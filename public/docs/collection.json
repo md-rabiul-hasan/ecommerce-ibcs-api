@@ -1,0 +1,731 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/127.0.0.1:8000\/api\/"
+        }
+    ],
+    "info": {
+        "name": "IBCS-Primax Laravel Developer Assignment",
+        "_postman_id": "4e0fd00a-48f6-4191-bff0-076b0036ad58",
+        "description": "This api documentation for IBCS Primax simple e-commerce assignment api documentation",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Customer Registration",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/customer\/registration",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/customer\/registration"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Rabiul Hasan\",\"email\":\"mdrabiulhasan.me@gmail.com\",\"password\":\"123456\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"status\": 200,\n\"message\": \"Customer Registration Successfully\",\n\"data\": {\n    \"name\": \"Rabiul Hasan\",\n    \"email\": \"mdrabiulhasan.me@gmail.com\",\n    \"role_id\": 2,\n    \"updated_at\": \"2022-02-06T20:26:58.000000Z\",\n    \"created_at\": \"2022-02-06T20:26:58.000000Z\",\n    \"id\": 5\n  }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\t\t\"success\": false,\n\t\"status\": 400,\n\t\"message\": \"Your email address already exists\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"mdrabiulhasan.me@gmail.com\",\"password\":\"123456\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\t\t\"success\": true,\n\t\"status\": 200,\n\t\"message\": \"Login Successfully\",\n\t\"data\": {\n\t\t\"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NDE3OTU4OCwiZXhwIjoxNjQ0MTgzMTg4LCJuYmYiOjE2NDQxNzk1ODgsImp0aSI6InhIZE50d2tZMjRqZVF3SkEiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.md_7MxsZztunX1H3TYlrdh8HTWnsX7qXLRwRGl6rZFo\",\n\t\t\"token_type\": \"bearer\",\n\t\t\"expires_in\": 3600\n\t}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n     \"success\": false,\n     \"status\": 401,\n     \"message\": \"Your email or password was incorrect\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n     \"status\": 200,\n     \"message\": \"Logout successfully\"\n }",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"status\": 403,\n     \"success\": false,\n     \"message\": \"un-authenticated user\"\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Store",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/store",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/store"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Mac-Book Pro\",\"description\":\"Apple Mac-Book Pro 13'\",\"price\":\"100.00\",\"qty\":3,\"images\":\"photo.png\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Product Store Successfully\"\n }",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n      \"success\": false,\n      \"status\": 400,\n      \"message\": \"The images must be an image.\"\n  }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Show",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/:id\/show",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/:id\/show",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the product."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n      \"status\": 200,\n      \"message\": \"Product Fetching Successfully\",\n      \"data\": {\n          \"id\": 3,\n          \"name\": \"Mobile\",\n         \"description\": \"Redmi\",\n         \"price\": \"10000.00\",\n         \"qty\": 3,\n         \"images\": \"product\/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg\",\n         \"entry_date\": \"2022-02-06\",\n         \"created_at\": \"2022-02-06T17:36:12.000000Z\",\n         \"updated_at\": \"2022-02-06T19:32:25.000000Z\"\n      }\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Update",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the product."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Mac-Book Pro\",\"description\":\"Apple Mac-Book Pro 13'\",\"price\":\"100.00\",\"qty\":3,\"images\":\"photo.png\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Product Updated Successfully\"\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Delete",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/:product\/delete",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/:product\/delete",
+                            "variable": [
+                                {
+                                    "id": "product",
+                                    "key": "product",
+                                    "value": "2",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Product Delete Successfully\"\n }",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n     \"status\": 404,\n     \"success\": false,\n     \"message\": \"your item not found\"\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product List",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/index",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/index"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Product List\",\n     \"data\": [\n         {\n             \"id\": 2,\n             \"name\": \"Computer\",\n             \"description\": \"Laptop core i3\",\n             \"price\": \"60000.00\",\n             \"qty\": 1,\n             \"images\": \"product\/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         },\n         {\n             \"id\": 3,\n             \"name\": \"Mobile\",\n             \"description\": \"Redmi\",\n             \"price\": \"10000.00\",\n             \"qty\": 3,\n             \"images\": \"product\/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         }\n     ]\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Searching",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/search\/:product_name",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/search\/:product_name",
+                            "variable": [
+                                {
+                                    "id": "product_name",
+                                    "key": "product_name",
+                                    "value": "error",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Product Searching Result\",\n     \"data\": [\n         {\n             \"id\": 2,\n             \"name\": \"Computer\",\n             \"description\": \"Laptop core i3\",\n             \"price\": \"60000.00\",\n             \"qty\": 1,\n             \"images\": \"product\/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         }\n     ]\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Sorting Highest To Lowest Price",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/sorting\/highest-to-lowest",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/sorting\/highest-to-lowest"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n      \"status\": 200,\n      \"message\": \"Product Sorting Success\",\n     \"data\": [\n         {\n             \"id\": 3,\n             \"name\": \"Mobile\",\n             \"description\": \"Redmi\",\n             \"price\": \"10000.00\",\n             \"qty\": 3,\n             \"images\": \"product\/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         },\n         {\n             \"id\": 2,\n             \"name\": \"Computer\",\n             \"description\": \"Laptop core i3\",\n             \"price\": \"60000.00\",\n             \"qty\": 1,\n             \"images\": \"product\/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         }\n     ]\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Product Sorting Lowest To Highest Price",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/product\/sorting\/lowest-to-highest",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/product\/sorting\/lowest-to-highest"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n      \"status\": 200,\n      \"message\": \"Product Sorting Success\",\n     \"data\": [\n         {\n             \"id\": 2,\n             \"name\": \"Computer\",\n             \"description\": \"Laptop core i3\",\n             \"price\": \"60000.00\",\n             \"qty\": 1,\n             \"images\": \"product\/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         },\n         {\n             \"id\": 3,\n             \"name\": \"Mobile\",\n             \"description\": \"Redmi\",\n             \"price\": \"10000.00\",\n             \"qty\": 3,\n             \"images\": \"product\/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg\",\n             \"entry_date\": \"2022-02-06\"\n         }\n     ]\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Order Reqeust",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order\/store",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/order\/store"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":\"1000.00\",\"shipping_address\":\"IBCS-Primax\",\"items\":[{\"product_id\":\"2\",\"qty\":2,\"price\":10}]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n      \"message\": \"Order Confirmed Successfully\",\n      \"data\": {\n          \"order_tracking_no\": \"62003816439d2\"\n     }\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Order Approved",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order\/approved",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/order\/approved"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_tracking_no\":\"62003816439d2\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n      \"status\": 200,\n      \"message\": \"Order Approved Successfully\",\n      \"data\": {\n          \"order_tracking_no\": \"62003816439d2\"\n      }\n  }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Order Rejected",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order\/rejected",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/order\/rejected"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_tracking_no\":\"62003816439d2\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n     \"status\": 200,\n     \"message\": \"Order Rejected Successfully\",\n     \"data\": {\n         \"order_tracking_no\": \"62003816439d2\"\n     }\n }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Order Delivery",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order\/delivery",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/order\/delivery"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_tracking_no\":\"62003816439d2\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Order Delivery Successfully\",\n     \"data\": {\n         \"order_tracking_no\": \"62003816439d2\"\n     }\n  }",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n      \"success\": false,\n      \"status\": 400,\n      \"message\": \"In this order all product doesn't available in stock\"\n  }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Order History",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order\/history",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/order\/history"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_tracking_no\":\"62003816439d2\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Order Delivery Successfully\",\n     \"data\": [\n          {\n              \"message\": \"Order Confirmed\",\n              \"user_name\": \"Rabiul Hasan\",\n              \"date_time\": \"2022-02-06 21:25:34\"\n         },\n         {\n             \"message\": \"Order Approved\",\n             \"user_name\": \"Rabiul Hasan\",\n              \"date_time\": \"2022-02-06 21:26:24\"\n          },\n         {\n              \"message\": \"Order Delivery Complete\",\n              \"user_name\": \"Rabiul Hasan\",\n              \"date_time\": \"2022-02-06 21:26:37\"\n          },\n     ]\n  }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Order Search",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order\/search",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/order\/search"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "bearer your-token"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_tracking_no\":\"62003816439d2\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n      \"success\": true,\n      \"status\": 200,\n      \"message\": \"Order Searching Result\",\n     \"data\": {\n         \"id\": 7,\n         \"amount\": \"100.00\",\n         \"shipping_address\": \"Fokirapool, Dhaka, Bangladesh\",\n         \"order_tracking_no\": \"6200220e07f43\",\n         \"date\": \"2022-02-06\",\n         \"status\": 3\n     }\n }",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

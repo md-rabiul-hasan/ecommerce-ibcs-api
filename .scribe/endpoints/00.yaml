@@ -1,0 +1,925 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/customer/registration
+    metadata:
+      title: 'Customer Registration'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'required. Customer name'
+        required: false
+        example: 'Rabiul Hasan'
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'required. Email must be unique and valid'
+        required: false
+        example: mdrabiulhasan.me@gmail.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: required.
+        required: false
+        example: '123456'
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "status": 200,
+          "message": "Customer Registration Successfully",
+          "data": {
+              "name": "Rabiul Hasan",
+              "email": "mdrabiulhasan.me@gmail.com",
+              "role_id": 2,
+              "updated_at": "2022-02-06T20:26:58.000000Z",
+              "created_at": "2022-02-06T20:26:58.000000Z",
+              "id": 5
+            }
+          }
+        headers: []
+        description: '200'
+      -
+        status: 400
+        content: |-
+          {
+          		"success": false,
+          	"status": 400,
+          	"message": "Your email address already exists"
+          }
+        headers: []
+        description: '400'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      title: Login
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'required. Email for login'
+        required: false
+        example: mdrabiulhasan.me@gmail.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'required. Passwrod for login'
+        required: false
+        example: '123456'
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          		"success": true,
+          	"status": 200,
+          	"message": "Login Successfully",
+          	"data": {
+          		"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NDE3OTU4OCwiZXhwIjoxNjQ0MTgzMTg4LCJuYmYiOjE2NDQxNzk1ODgsImp0aSI6InhIZE50d2tZMjRqZVF3SkEiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.md_7MxsZztunX1H3TYlrdh8HTWnsX7qXLRwRGl6rZFo",
+          		"token_type": "bearer",
+          		"expires_in": 3600
+          	}
+          }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+               "success": false,
+               "status": 401,
+               "message": "Your email or password was incorrect"
+          }
+        headers: []
+        description: '401'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      title: Logout
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+               "status": 200,
+               "message": "Logout successfully"
+           }
+        headers: []
+        description: '200'
+      -
+        status: 403
+        content: |-
+          {
+               "status": 403,
+               "success": false,
+               "message": "un-authenticated user"
+           }
+        headers: []
+        description: '403'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/product/store
+    metadata:
+      title: 'Product Store'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'required. Product name'
+        required: false
+        example: 'Mac-Book Pro'
+        type: string
+        custom: []
+      description:
+        name: description
+        description: 'required. Product Description'
+        required: false
+        example: 'Apple Mac-Book Pro 13'''
+        type: text
+        custom: []
+      price:
+        name: price
+        description: 'required. Product Price'
+        required: false
+        example: '100.00'
+        type: decimal
+        custom: []
+      qty:
+        name: qty
+        description: 'required. Product quantity'
+        required: false
+        example: 3
+        type: integer
+        custom: []
+      images:
+        name: images
+        description: 'required. Product image only image accept'
+        required: false
+        example: photo.png
+        type: files
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Product Store Successfully"
+           }
+        headers: []
+        description: '200'
+      -
+        status: 400
+        content: |-
+          {
+                "success": false,
+                "status": 400,
+                "message": "The images must be an image."
+            }
+        headers: []
+        description: '400'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - GET
+    uri: 'api/product/{id}/show'
+    metadata:
+      title: 'Product Show'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+                "status": 200,
+                "message": "Product Fetching Successfully",
+                "data": {
+                    "id": 3,
+                    "name": "Mobile",
+                   "description": "Redmi",
+                   "price": "10000.00",
+                   "qty": 3,
+                   "images": "product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg",
+                   "entry_date": "2022-02-06",
+                   "created_at": "2022-02-06T17:36:12.000000Z",
+                   "updated_at": "2022-02-06T19:32:25.000000Z"
+                }
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: 'api/product/{id}/update'
+    metadata:
+      title: 'Product Update'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'required. Product name'
+        required: false
+        example: 'Mac-Book Pro'
+        type: string
+        custom: []
+      description:
+        name: description
+        description: 'required. Product Description'
+        required: false
+        example: 'Apple Mac-Book Pro 13'''
+        type: text
+        custom: []
+      price:
+        name: price
+        description: 'required. Product Price'
+        required: false
+        example: '100.00'
+        type: decimal
+        custom: []
+      qty:
+        name: qty
+        description: 'required. Product quantity'
+        required: false
+        example: 3
+        type: integer
+        custom: []
+      images:
+        name: images
+        description: 'required. Product image only image accept'
+        required: false
+        example: photo.png
+        type: files
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Product Updated Successfully"
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - GET
+    uri: 'api/product/{product}/delete'
+    metadata:
+      title: 'Product Delete'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters:
+      product:
+        name: product
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Product Delete Successfully"
+           }
+        headers: []
+        description: '200'
+      -
+        status: 404
+        content: |-
+          {
+               "status": 404,
+               "success": false,
+               "message": "your item not found"
+           }
+        headers: []
+        description: '404'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - GET
+    uri: api/product/index
+    metadata:
+      title: 'Product List'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Product List",
+               "data": [
+                   {
+                       "id": 2,
+                       "name": "Computer",
+                       "description": "Laptop core i3",
+                       "price": "60000.00",
+                       "qty": 1,
+                       "images": "product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg",
+                       "entry_date": "2022-02-06"
+                   },
+                   {
+                       "id": 3,
+                       "name": "Mobile",
+                       "description": "Redmi",
+                       "price": "10000.00",
+                       "qty": 3,
+                       "images": "product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg",
+                       "entry_date": "2022-02-06"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - GET
+    uri: 'api/product/search/{product_name}'
+    metadata:
+      title: 'Product Searching'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      product_name:
+        name: product_name
+        description: ''
+        required: true
+        example: error
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Product Searching Result",
+               "data": [
+                   {
+                       "id": 2,
+                       "name": "Computer",
+                       "description": "Laptop core i3",
+                       "price": "60000.00",
+                       "qty": 1,
+                       "images": "product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg",
+                       "entry_date": "2022-02-06"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - GET
+    uri: api/product/sorting/highest-to-lowest
+    metadata:
+      title: 'Product Sorting Highest To Lowest Price'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+                "status": 200,
+                "message": "Product Sorting Success",
+               "data": [
+                   {
+                       "id": 3,
+                       "name": "Mobile",
+                       "description": "Redmi",
+                       "price": "10000.00",
+                       "qty": 3,
+                       "images": "product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg",
+                       "entry_date": "2022-02-06"
+                   },
+                   {
+                       "id": 2,
+                       "name": "Computer",
+                       "description": "Laptop core i3",
+                       "price": "60000.00",
+                       "qty": 1,
+                       "images": "product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg",
+                       "entry_date": "2022-02-06"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - GET
+    uri: api/product/sorting/lowest-to-highest
+    metadata:
+      title: 'Product Sorting Lowest To Highest Price'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+                "status": 200,
+                "message": "Product Sorting Success",
+               "data": [
+                   {
+                       "id": 2,
+                       "name": "Computer",
+                       "description": "Laptop core i3",
+                       "price": "60000.00",
+                       "qty": 1,
+                       "images": "product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg",
+                       "entry_date": "2022-02-06"
+                   },
+                   {
+                       "id": 3,
+                       "name": "Mobile",
+                       "description": "Redmi",
+                       "price": "10000.00",
+                       "qty": 3,
+                       "images": "product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg",
+                       "entry_date": "2022-02-06"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/order/store
+    metadata:
+      title: 'Order Reqeust'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      amount:
+        name: amount
+        description: required.
+        required: false
+        example: '1000.00'
+        type: decimal
+        custom: []
+      shipping_address:
+        name: shipping_address
+        description: required.
+        required: false
+        example: IBCS-Primax
+        type: text
+        custom: []
+      items:
+        name: items
+        description: required.
+        required: false
+        example:
+          -
+            product_id: '2'
+            qty: 2
+            price: 10.0
+        type: 'string[]'
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+                "message": "Order Confirmed Successfully",
+                "data": {
+                    "order_tracking_no": "62003816439d2"
+               }
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/order/approved
+    metadata:
+      title: 'Order Approved'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      order_tracking_no:
+        name: order_tracking_no
+        description: 'required. Every order tracking number is unique'
+        required: false
+        example: 62003816439d2
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+                "status": 200,
+                "message": "Order Approved Successfully",
+                "data": {
+                    "order_tracking_no": "62003816439d2"
+                }
+            }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/order/rejected
+    metadata:
+      title: 'Order Rejected'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      order_tracking_no:
+        name: order_tracking_no
+        description: 'required. Every order tracking number is unique'
+        required: false
+        example: 62003816439d2
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+               "status": 200,
+               "message": "Order Rejected Successfully",
+               "data": {
+                   "order_tracking_no": "62003816439d2"
+               }
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/order/delivery
+    metadata:
+      title: 'Order Delivery'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      order_tracking_no:
+        name: order_tracking_no
+        description: 'required. Every order tracking number is unique'
+        required: false
+        example: 62003816439d2
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Order Delivery Successfully",
+               "data": {
+                   "order_tracking_no": "62003816439d2"
+               }
+            }
+        headers: []
+        description: '200'
+      -
+        status: 400
+        content: |-
+          {
+                "success": false,
+                "status": 400,
+                "message": "In this order all product doesn't available in stock"
+            }
+        headers: []
+        description: '400'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean
+  -
+    httpMethods:
+      - POST
+    uri: api/order/history
+    metadata:
+      title: 'Order History'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      order_tracking_no:
+        name: order_tracking_no
+        description: 'required. Every order tracking number is unique'
+        required: false
+        example: 62003816439d2
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": true,
+               "status": 200,
+               "message": "Order Delivery Successfully",
+               "data": [
+                    {
+                        "message": "Order Confirmed",
+                        "user_name": "Rabiul Hasan",
+                        "date_time": "2022-02-06 21:25:34"
+                   },
+                   {
+                       "message": "Order Approved",
+                       "user_name": "Rabiul Hasan",
+                        "date_time": "2022-02-06 21:26:24"
+                    },
+                   {
+                        "message": "Order Delivery Complete",
+                        "user_name": "Rabiul Hasan",
+                        "date_time": "2022-02-06 21:26:37"
+                    },
+               ]
+            }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: ''
+  -
+    httpMethods:
+      - POST
+    uri: api/order/search
+    metadata:
+      title: 'Order Search'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'bearer your-token'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      order_tracking_no:
+        name: order_tracking_no
+        description: 'required. Every order tracking number is unique'
+        required: false
+        example: 62003816439d2
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+                "success": true,
+                "status": 200,
+                "message": "Order Searching Result",
+               "data": {
+                   "id": 7,
+                   "amount": "100.00",
+                   "shipping_address": "Fokirapool, Dhaka, Bangladesh",
+                   "order_tracking_no": "6200220e07f43",
+                   "date": "2022-02-06",
+                   "status": 3
+               }
+           }
+        headers: []
+        description: '200'
+    responseFields:
+      success:
+        name: success
+        description: 'The success of this API response is (`true` or `false`).'
+        type: boolean

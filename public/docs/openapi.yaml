@@ -1,0 +1,1361 @@
+openapi: 3.0.3
+info:
+  title: 'IBCS-Primax Laravel Developer Assignment'
+  description: 'This api documentation for IBCS Primax simple e-commerce assignment api documentation'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000/api'
+paths:
+  /api/customer/registration:
+    post:
+      summary: 'Customer Registration'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Customer Registration Successfully'
+                  data:
+                    name: 'Rabiul Hasan'
+                    email: mdrabiulhasan.me@gmail.com
+                    role_id: 2
+                    updated_at: '2022-02-06T20:26:58.000000Z'
+                    created_at: '2022-02-06T20:26:58.000000Z'
+                    id: 5
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Customer Registration Successfully'
+                  data:
+                    type: object
+                    example:
+                      name: 'Rabiul Hasan'
+                      email: mdrabiulhasan.me@gmail.com
+                      role_id: 2
+                      updated_at: '2022-02-06T20:26:58.000000Z'
+                      created_at: '2022-02-06T20:26:58.000000Z'
+                      id: 5
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  status: 400
+                  message: 'Your email address already exists'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: 'Your email address already exists'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'required. Customer name'
+                  example: 'Rabiul Hasan'
+                email:
+                  type: string
+                  description: 'required. Email must be unique and valid'
+                  example: mdrabiulhasan.me@gmail.com
+                password:
+                  type: string
+                  description: required.
+                  example: '123456'
+      security: []
+  /api/login:
+    post:
+      summary: Login
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Login Successfully'
+                  data:
+                    access_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NDE3OTU4OCwiZXhwIjoxNjQ0MTgzMTg4LCJuYmYiOjE2NDQxNzk1ODgsImp0aSI6InhIZE50d2tZMjRqZVF3SkEiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.md_7MxsZztunX1H3TYlrdh8HTWnsX7qXLRwRGl6rZFo
+                    token_type: bearer
+                    expires_in: 3600
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Login Successfully'
+                  data:
+                    type: object
+                    example:
+                      access_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NDE3OTU4OCwiZXhwIjoxNjQ0MTgzMTg4LCJuYmYiOjE2NDQxNzk1ODgsImp0aSI6InhIZE50d2tZMjRqZVF3SkEiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.md_7MxsZztunX1H3TYlrdh8HTWnsX7qXLRwRGl6rZFo
+                      token_type: bearer
+                      expires_in: 3600
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  status: 401
+                  message: 'Your email or password was incorrect'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 401
+                  message:
+                    type: string
+                    example: 'Your email or password was incorrect'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'required. Email for login'
+                  example: mdrabiulhasan.me@gmail.com
+                password:
+                  type: string
+                  description: 'required. Passwrod for login'
+                  example: '123456'
+      security: []
+  /api/logout:
+    post:
+      summary: Logout
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Logout successfully'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Logout successfully'
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 403
+                  success: false
+                  message: 'un-authenticated user'
+                properties:
+                  status:
+                    type: integer
+                    example: 403
+                  success:
+                    type: boolean
+                    example: false
+                    description: 'The success of this API response is (`true` or `false`).'
+                  message:
+                    type: string
+                    example: 'un-authenticated user'
+      tags:
+        - Endpoints
+  /api/product/store:
+    post:
+      summary: 'Product Store'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Store Successfully'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Store Successfully'
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  status: 400
+                  message: 'The images must be an image.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: 'The images must be an image.'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'required. Product name'
+                  example: 'Mac-Book Pro'
+                description:
+                  type: text
+                  description: 'required. Product Description'
+                  example: 'Apple Mac-Book Pro 13'''
+                price:
+                  type: decimal
+                  description: 'required. Product Price'
+                  example: '100.00'
+                qty:
+                  type: integer
+                  description: 'required. Product quantity'
+                  example: 3
+                images:
+                  type: files
+                  description: 'required. Product image only image accept'
+                  example: photo.png
+  '/api/product/{id}/show':
+    get:
+      summary: 'Product Show'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Fetching Successfully'
+                  data:
+                    id: 3
+                    name: Mobile
+                    description: Redmi
+                    price: '10000.00'
+                    qty: 3
+                    images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                    entry_date: '2022-02-06'
+                    created_at: '2022-02-06T17:36:12.000000Z'
+                    updated_at: '2022-02-06T19:32:25.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Fetching Successfully'
+                  data:
+                    type: object
+                    example:
+                      id: 3
+                      name: Mobile
+                      description: Redmi
+                      price: '10000.00'
+                      qty: 3
+                      images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                      entry_date: '2022-02-06'
+                      created_at: '2022-02-06T17:36:12.000000Z'
+                      updated_at: '2022-02-06T19:32:25.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/product/{id}/update':
+    post:
+      summary: 'Product Update'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Updated Successfully'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Updated Successfully'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'required. Product name'
+                  example: 'Mac-Book Pro'
+                description:
+                  type: text
+                  description: 'required. Product Description'
+                  example: 'Apple Mac-Book Pro 13'''
+                price:
+                  type: decimal
+                  description: 'required. Product Price'
+                  example: '100.00'
+                qty:
+                  type: integer
+                  description: 'required. Product quantity'
+                  example: 3
+                images:
+                  type: files
+                  description: 'required. Product image only image accept'
+                  example: photo.png
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/product/{product}/delete':
+    get:
+      summary: 'Product Delete'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Delete Successfully'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Delete Successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 404
+                  success: false
+                  message: 'your item not found'
+                properties:
+                  status:
+                    type: integer
+                    example: 404
+                  success:
+                    type: boolean
+                    example: false
+                    description: 'The success of this API response is (`true` or `false`).'
+                  message:
+                    type: string
+                    example: 'your item not found'
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: product
+        description: ''
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/product/index:
+    get:
+      summary: 'Product List'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product List'
+                  data:
+                    -
+                      id: 2
+                      name: Computer
+                      description: 'Laptop core i3'
+                      price: '60000.00'
+                      qty: 1
+                      images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                      entry_date: '2022-02-06'
+                    -
+                      id: 3
+                      name: Mobile
+                      description: Redmi
+                      price: '10000.00'
+                      qty: 3
+                      images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                      entry_date: '2022-02-06'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product List'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 2
+                        name: Computer
+                        description: 'Laptop core i3'
+                        price: '60000.00'
+                        qty: 1
+                        images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                        entry_date: '2022-02-06'
+                      -
+                        id: 3
+                        name: Mobile
+                        description: Redmi
+                        price: '10000.00'
+                        qty: 3
+                        images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                        entry_date: '2022-02-06'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+  '/api/product/search/{product_name}':
+    get:
+      summary: 'Product Searching'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Searching Result'
+                  data:
+                    -
+                      id: 2
+                      name: Computer
+                      description: 'Laptop core i3'
+                      price: '60000.00'
+                      qty: 1
+                      images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                      entry_date: '2022-02-06'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Searching Result'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 2
+                        name: Computer
+                        description: 'Laptop core i3'
+                        price: '60000.00'
+                        qty: 1
+                        images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                        entry_date: '2022-02-06'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: product_name
+        description: ''
+        example: error
+        required: true
+        schema:
+          type: string
+  /api/product/sorting/highest-to-lowest:
+    get:
+      summary: 'Product Sorting Highest To Lowest Price'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Sorting Success'
+                  data:
+                    -
+                      id: 3
+                      name: Mobile
+                      description: Redmi
+                      price: '10000.00'
+                      qty: 3
+                      images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                      entry_date: '2022-02-06'
+                    -
+                      id: 2
+                      name: Computer
+                      description: 'Laptop core i3'
+                      price: '60000.00'
+                      qty: 1
+                      images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                      entry_date: '2022-02-06'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Sorting Success'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 3
+                        name: Mobile
+                        description: Redmi
+                        price: '10000.00'
+                        qty: 3
+                        images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                        entry_date: '2022-02-06'
+                      -
+                        id: 2
+                        name: Computer
+                        description: 'Laptop core i3'
+                        price: '60000.00'
+                        qty: 1
+                        images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                        entry_date: '2022-02-06'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+  /api/product/sorting/lowest-to-highest:
+    get:
+      summary: 'Product Sorting Lowest To Highest Price'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Product Sorting Success'
+                  data:
+                    -
+                      id: 2
+                      name: Computer
+                      description: 'Laptop core i3'
+                      price: '60000.00'
+                      qty: 1
+                      images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                      entry_date: '2022-02-06'
+                    -
+                      id: 3
+                      name: Mobile
+                      description: Redmi
+                      price: '10000.00'
+                      qty: 3
+                      images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                      entry_date: '2022-02-06'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Product Sorting Success'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 2
+                        name: Computer
+                        description: 'Laptop core i3'
+                        price: '60000.00'
+                        qty: 1
+                        images: product/33XB8eHBgORRpF0cW3WyoCEm8ELD793zuFIpOuri.jpg
+                        entry_date: '2022-02-06'
+                      -
+                        id: 3
+                        name: Mobile
+                        description: Redmi
+                        price: '10000.00'
+                        qty: 3
+                        images: product/ZNVLUKAAu7aNWug4GufltLYPJkT6F256kFlBJ7K5.jpg
+                        entry_date: '2022-02-06'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+  /api/order/store:
+    post:
+      summary: 'Order Reqeust'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Order Confirmed Successfully'
+                  data:
+                    order_tracking_no: 62003816439d2
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Order Confirmed Successfully'
+                  data:
+                    type: object
+                    example:
+                      order_tracking_no: 62003816439d2
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: decimal
+                  description: required.
+                  example: '1000.00'
+                shipping_address:
+                  type: text
+                  description: required.
+                  example: IBCS-Primax
+                items:
+                  type: array
+                  description: required.
+                  example:
+                    -
+                      product_id: '2'
+                      qty: 2
+                      price: 10.0
+                  items:
+                    type: string
+  /api/order/approved:
+    post:
+      summary: 'Order Approved'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Order Approved Successfully'
+                  data:
+                    order_tracking_no: 62003816439d2
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Order Approved Successfully'
+                  data:
+                    type: object
+                    example:
+                      order_tracking_no: 62003816439d2
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_tracking_no:
+                  type: string
+                  description: 'required. Every order tracking number is unique'
+                  example: 62003816439d2
+  /api/order/rejected:
+    post:
+      summary: 'Order Rejected'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Order Rejected Successfully'
+                  data:
+                    order_tracking_no: 62003816439d2
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Order Rejected Successfully'
+                  data:
+                    type: object
+                    example:
+                      order_tracking_no: 62003816439d2
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_tracking_no:
+                  type: string
+                  description: 'required. Every order tracking number is unique'
+                  example: 62003816439d2
+  /api/order/delivery:
+    post:
+      summary: 'Order Delivery'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Order Delivery Successfully'
+                  data:
+                    order_tracking_no: 62003816439d2
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Order Delivery Successfully'
+                  data:
+                    type: object
+                    example:
+                      order_tracking_no: 62003816439d2
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  status: 400
+                  message: 'In this order all product doesn''t available in stock'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: 'In this order all product doesn''t available in stock'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_tracking_no:
+                  type: string
+                  description: 'required. Every order tracking number is unique'
+                  example: 62003816439d2
+  /api/order/history:
+    post:
+      summary: 'Order History'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n     \"success\": true,\n     \"status\": 200,\n     \"message\": \"Order Delivery Successfully\",\n     \"data\": [\n          {\n              \"message\": \"Order Confirmed\",\n              \"user_name\": \"Rabiul Hasan\",\n              \"date_time\": \"2022-02-06 21:25:34\"\n         },\n         {\n             \"message\": \"Order Approved\",\n             \"user_name\": \"Rabiul Hasan\",\n              \"date_time\": \"2022-02-06 21:26:24\"\n          },\n         {\n              \"message\": \"Order Delivery Complete\",\n              \"user_name\": \"Rabiul Hasan\",\n              \"date_time\": \"2022-02-06 21:26:37\"\n          },\n     ]\n  }"
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_tracking_no:
+                  type: string
+                  description: 'required. Every order tracking number is unique'
+                  example: 62003816439d2
+  /api/order/search:
+    post:
+      summary: 'Order Search'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'bearer your-token'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  status: 200
+                  message: 'Order Searching Result'
+                  data:
+                    id: 7
+                    amount: '100.00'
+                    shipping_address: 'Fokirapool, Dhaka, Bangladesh'
+                    order_tracking_no: 6200220e07f43
+                    date: '2022-02-06'
+                    status: 3
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: 'The success of this API response is (`true` or `false`).'
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Order Searching Result'
+                  data:
+                    type: object
+                    example:
+                      id: 7
+                      amount: '100.00'
+                      shipping_address: 'Fokirapool, Dhaka, Bangladesh'
+                      order_tracking_no: 6200220e07f43
+                      date: '2022-02-06'
+                      status: 3
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_tracking_no:
+                  type: string
+                  description: 'required. Every order tracking number is unique'
+                  example: 62003816439d2
+tags:
+  -
+    name: Endpoints
+    description: ''
